@@ -1,0 +1,50 @@
+{{ define "main" }}
+{{ $headless := .Site.GetPage "/homepage" }}
+{{ $sections := $headless.Resources.ByType "page" }}
+{{ $sections := cond .Site.BuildDrafts $sections (where $sections "Draft" "==" false) }}
+<header id="site-head" {{ with .Params.header_image }}style="background-image: url({{ . }})"{{ end }}>
+    <div id="site-head-top" class="inner">
+    <div id="intro">La compagnie Mon P'tit Guidon présente</div>
+    <h1 class="blog-title"><span id="ville"><span>La ville</span></span> <span id="extra">extra</span><span id="ordinaire">ordinaire</span><div class="butterfly_container">
+        <var class="rotate3d">
+            <figure class="butterfly">
+                <svg class="wing left" viewBox="0 0 119.744 148.477">
+                    <use class="left" xlink:href="images/butterfly.svg#shape-moth"></use>
+                </svg> 
+                <svg class="wing right" viewBox="0 0 119.744 148.477">
+                    <use class="left" xlink:href="images/butterfly.svg#shape-moth"></use>
+                </svg> 
+            </figure>
+        </var></div>
+    </h1>
+    </div>
+    
+    <div id="site-head-bottom" class="inner">
+        
+        {{ with .Params.header_subheadline }}<h2 class="blog-description">{{ . }}</h2>{{ end }}
+
+        {{ range where $sections ".Params.header_menu" "eq" true }}
+                <a class='btn site-menu' data-title-anchor='{{ anchorize .Title }}'>{{ .Title }}</a>
+        {{ end }}
+        <i id='header-arrow' class="fa fa-angle-down"></i>
+    </div>
+</header>
+<main class="content" role="main">
+
+    <div class='fixed-nav'>
+    </div>
+    {{ range $index_val, $elem_val := $sections }}
+        <div class='post-holder'>
+            <article id='{{ anchorize .Title }}' class='post {{ if eq $index_val 0 }}first{{ end }} {{ if eq (add $index_val 1) (len $sections) }}last{{ end }}'>
+                <header class="post-header">
+                    <h2 class="post-title">{{ .Title }}</h2>
+                </header>
+                <section class="post-content">
+                    {{ .Content }}
+                </section>
+            </article>
+            <div class='post-after'></div>
+        </div>
+    {{ end }}
+</main>
+{{ end }}
