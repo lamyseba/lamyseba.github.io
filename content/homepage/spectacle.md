@@ -11,7 +11,7 @@ header_menu: true
 La compagnie « Mon p’tit guidon » vous propose le conte musical : « La ville extraordinaire ». Tantôt en parole, tantôt en chanson, vous découvrirez comment la prophétie d’Angélique suivie de la venue du sorcier Grossmauless a transformé une ville ordinaire en ville extraordinaire. La rumeur court que l'un des conteurs possède des photos de cette fameuse ville. 
 
 * Durée : **45mn**.
-* Pour un public **à partir de 10 ans**.
+* Pour un public **à partir de 7 ans**.
 
 ### En arrière plan
 
